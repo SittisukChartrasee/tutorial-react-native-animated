@@ -14,17 +14,17 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {createNativeStackNavigator} from 'react-native-screens/native-stack';
 import RNRestart from 'react-native-restart';
 
-import {MenuItem, SettingsSwitch} from './src/shared';
+import {MenuItem, SettingsSwitch} from '../components'
 
-import SimpleNativeStack from './src/screens/SimpleNativeStack';
-import StackPresentation from './src/screens/StackPresentation';
-import HeaderOptions from './src/screens/HeaderOptions';
-import StatusBarExample from './src/screens/StatusBar';
-import Animations from './src/screens/Animations';
-import BottomTabsAndStack from './src/screens/BottomTabsAndStack';
-import StackReactNavigation4 from './src/screens/StackReactNavigation4';
-import Modals from './src/screens/Modals';
-import Orientation from './src/screens/Orientation';
+import SimpleNativeStack from '../screens/SimpleNativeStack';
+import StackPresentation from '../screens/StackPresentation';
+import HeaderOptions from '../screens/HeaderOptions';
+import StatusBarExample from '../screens/StatusBar';
+import Animations from '../screens/Animations';
+import BottomTabsAndStack from '../screens/BottomTabsAndStack';
+import StackReactNavigation4 from '../screens/StackReactNavigation4';
+import Modals from '../screens/Modals';
+import Orientation from '../screens/Orientation';
 
 enableScreens();
 

@@ -3,15 +3,12 @@ import {View, SafeAreaView} from 'react-native';
 import {Todolist} from './pages';
 import {Provider} from 'react-redux';
 import {store} from './store';
+import Navigator from './navigator'
 
 export default () => {
   return (
     <Provider store={store}>
-      <SafeAreaView style={{flex: 1}}>
-        <View style={{flex: 1, padding: 20}}>
-          <Todolist />
-        </View>
-      </SafeAreaView>
+      <Navigator />
     </Provider>
   );
 };
