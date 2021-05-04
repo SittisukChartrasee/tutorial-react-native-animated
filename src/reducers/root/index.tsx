@@ -1,3 +1,12 @@
+export type IRoot = {
+  data: dataItems[]
+}
+
+type dataItems = {
+  title: string
+  active: boolean
+}
+
 const initState = {
   data: [
     {
@@ -15,7 +24,7 @@ const initState = {
   ],
 };
 
-export default (state = initState, action) => {
+export default (state = initState, action: { type: string; value: number; key: string; }) => {
   switch (action.type) {
     case 'add':
       state.data.push({

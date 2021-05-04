@@ -1,10 +1,12 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
+import { IStore } from '../../interface/interfaceStore';
+
 
 export default () => {
   const dispatch = useDispatch();
-  const {data} = useSelector((state) => state.root);
+  const {data} = useSelector((state: IStore) => state.root);
   const test = useSelector((state) => state);
 
   return (
@@ -12,7 +14,7 @@ export default () => {
       <Button
         title="add"
         onPress={() =>
-          dispatch((dispatch) =>
+          dispatch((dispatch: (arg0: { type: string; key: string; value: number; }) => any) =>
             dispatch({
               type: 'add',
               key: 'data',
@@ -21,7 +23,7 @@ export default () => {
           )
         }
       />
-      {data.map((d, i) => (
+      {data.map((d: { active: any; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }, i: any) => (
         <>
           {d.active && (
             <View key={`${d.title + i}`} style={{flexDirection: 'row'}}>
@@ -29,7 +31,7 @@ export default () => {
               <Button
                 title="remove"
                 onPress={() =>
-                  dispatch((dispatch) =>
+                  dispatch((dispatch: (arg0: { type: string; key: string; value: any; }) => any) =>
                     dispatch({type: 'remove', key: 'data', value: i}),
                   )
                 }
