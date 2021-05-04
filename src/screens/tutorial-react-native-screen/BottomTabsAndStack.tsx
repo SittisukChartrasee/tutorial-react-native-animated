@@ -6,7 +6,7 @@ import {
   NativeStackNavigationProp,
 } from 'react-native-screens/native-stack';
 import {RouteProp} from '@react-navigation/native';
-import {Button} from '../components';
+import {Button} from '../../components';
 
 type StackParamList = {
   Details: {index: number};

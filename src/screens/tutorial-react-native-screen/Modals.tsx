@@ -4,7 +4,7 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationProp,
 } from 'react-native-screens/native-stack';
-import {Button, Alert} from '../components';
+import {Button, Alert} from '../../components';
 
 type StackParamList = {
   Main: undefined;

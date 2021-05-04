@@ -16,15 +16,15 @@ import RNRestart from 'react-native-restart';
 
 import {MenuItem, SettingsSwitch} from '../components'
 
-import SimpleNativeStack from '../screens/SimpleNativeStack';
-import StackPresentation from '../screens/StackPresentation';
-import HeaderOptions from '../screens/HeaderOptions';
-import StatusBarExample from '../screens/StatusBar';
-import Animations from '../screens/Animations';
-import BottomTabsAndStack from '../screens/BottomTabsAndStack';
-import StackReactNavigation4 from '../screens/StackReactNavigation4';
-import Modals from '../screens/Modals';
-import Orientation from '../screens/Orientation';
+import SimpleNativeStack from '../screens/tutorial-react-native-screen/SimpleNativeStack';
+import StackPresentation from '../screens/tutorial-react-native-screen/StackPresentation';
+import HeaderOptions from '../screens/tutorial-react-native-screen/HeaderOptions';
+import StatusBarExample from '../screens/tutorial-react-native-screen/StatusBar';
+import Animations from '../screens/tutorial-react-native-screen/Animations';
+import BottomTabsAndStack from '../screens/tutorial-react-native-screen/BottomTabsAndStack';
+import StackReactNavigation4 from '../screens/tutorial-react-native-screen/StackReactNavigation4';
+import Modals from '../screens/tutorial-react-native-screen/Modals';
+import Orientation from '../screens/tutorial-react-native-screen/Orientation';
 
 type reigsterPages = {
     title: string;
@@ -87,12 +87,7 @@ const SCREENS: Record<string, reigsterPages> = {
   },
 };
 
-type RootStackParamList = {
-  Main: undefined;
-} & {
-  [P in keyof typeof SCREENS]: undefined;
-};
-
+type RootStackParamList = { Main: undefined } & { [P in keyof typeof SCREENS]: undefined };
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 interface MainScreenProps {
@@ -135,7 +130,7 @@ const MainScreen = ({navigation}: MainScreenProps): JSX.Element => (
   </ScrollView>
 );
 
-const ExampleApp = (): JSX.Element => (
+const navigation = (): JSX.Element => (
   <NavigationContainer>
     <Stack.Navigator
       screenOptions={{
@@ -170,4 +165,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ExampleApp;
+export default navigation;

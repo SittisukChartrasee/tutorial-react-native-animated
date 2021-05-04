@@ -9,7 +9,7 @@ import {createCompatNavigatorFactory} from '@react-navigation/compat';
 import {createNativeStackNavigator} from 'react-native-screens/native-stack';
 // more information about compatibility layer https://reactnavigation.org/docs/compatibility/
 
-import {Button} from '../components';
+import {Button} from '../../components';
 
 class HomeScreen extends React.Component<{navigation: StackNavigationProp<any>}> {
   render() {

@@ -5,7 +5,7 @@ import {
   NativeStackNavigationProp,
   NativeStackNavigationOptions,
 } from 'react-native-screens/native-stack';
-import {SettingsPicker, Button} from '../components';
+import {SettingsPicker, Button} from '../../components';
 
 type StackParamList = {
   Main: undefined;

@@ -11,7 +11,7 @@ import {
   SettingsSwitch,
   Square,
   Button,
-} from '../components';
+} from '../../components';
 
 type StackParamList = {
   Main: undefined;
