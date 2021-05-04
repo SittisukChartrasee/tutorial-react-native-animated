@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Button} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import { IStore } from '../../interface/interfaceStore';
+import { IRootAction, IRootDefault } from '../../reducers/root';
 
 
 export default () => {
@@ -14,7 +15,7 @@ export default () => {
       <Button
         title="add"
         onPress={() =>
-          dispatch((dispatch: (arg0: { type: string; key: string; value: number; }) => any) =>
+          dispatch((dispatch: (arg0: IRootAction) => void) =>
             dispatch({
               type: 'add',
               key: 'data',
@@ -23,7 +24,7 @@ export default () => {
           )
         }
       />
-      {data.map((d: { active: any; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }, i: any) => (
+      {data.map((d: IRootDefault, i: number) => (
         <>
           {d.active && (
             <View key={`${d.title + i}`} style={{flexDirection: 'row'}}>
@@ -31,7 +32,7 @@ export default () => {
               <Button
                 title="remove"
                 onPress={() =>
-                  dispatch((dispatch: (arg0: { type: string; key: string; value: any; }) => any) =>
+                  dispatch((dispatch: (arg0: IRootAction) => void) =>
                     dispatch({type: 'remove', key: 'data', value: i}),
                   )
                 }

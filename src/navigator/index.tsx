@@ -26,20 +26,19 @@ import StackReactNavigation4 from '../screens/StackReactNavigation4';
 import Modals from '../screens/Modals';
 import Orientation from '../screens/Orientation';
 
+type reigsterPages = {
+    title: string;
+    component: () => JSX.Element;
+    type: 'example' | 'playground';
+}
+
 enableScreens();
 
 if (Platform.OS === 'android') {
   StatusBar.setTranslucent(true);
 }
 
-const SCREENS: Record<
-  string,
-  {
-    title: string;
-    component: () => JSX.Element;
-    type: 'example' | 'playground';
-  }
-> = {
+const SCREENS: Record<string, reigsterPages> = {
   SimpleNativeStack: {
     title: 'Simple Native Stack',
     component: SimpleNativeStack,
