@@ -1,14 +1,22 @@
 import faker from 'faker';
-export const dataUser = () => {
-  const imageURL = `https://randomuser.me/portraits/${faker.helpers.randomize([
-    'women',
-    'man',
-  ])}/${faker.datatype.number(60)}.jpg`;
-  return [...Array(10).keys()].map(() => ({
-    key: faker.datatype.uuid(),
-    image: imageURL,
-    name: faker.name,
-    jobTitle: faker.name.jobTitle,
-    email: faker.internet.email,
-  }));
+
+// faker.seed(10);
+
+export const config = {
+  SPACING: 20,
+  AVATAR_SIZE: 70,
 };
+
+export const bg =
+  'https://images.pexels.com/photos/1231265/pexels-photo-1231265.jpeg';
+
+export const dataUser = [...Array(130).keys()].map(() => ({
+  key: faker.datatype.uuid(),
+  image: `https://randomuser.me/portraits/${faker.helpers.randomize([
+    'women',
+    'men',
+  ])}/${faker.datatype.number(60)}.jpg`,
+  name: faker.name.firstName(faker.datatype.number(60)),
+  jobTitle: faker.name.jobTitle(),
+  email: faker.internet.email(),
+}));
