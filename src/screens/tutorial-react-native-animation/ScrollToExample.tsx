@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView, Platform } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {StyleSheet, View, Text, ScrollView, Platform} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -30,7 +30,7 @@ function ScrollToScreen(): React.ReactElement {
 
   return (
     <SafeAreaView>
-      <View style={{ alignItems: 'center' }}>
+      <View style={{alignItems: 'center'}}>
         <NumberDisplay number={number} />
         <Text>move dot</Text>
         <View>
@@ -47,9 +47,9 @@ function getDigit(number: Animated.SharedValue<number>, i: number) {
   });
 }
 
-function NumberDisplay({ number }: { number: Animated.SharedValue<number> }) {
+function NumberDisplay({number}: {number: Animated.SharedValue<number>}) {
   return (
-    <View style={{ height: 400, width: 200 }}>
+    <View style={{height: 400, width: 200}}>
       <View
         style={{
           flexDirection: 'row-reverse',
@@ -64,13 +64,13 @@ function NumberDisplay({ number }: { number: Animated.SharedValue<number> }) {
   );
 }
 
-function Digit({ digit }: { digit: Animated.SharedValue<number> }) {
+function Digit({digit}: {digit: Animated.SharedValue<number>}) {
   const aref = useAnimatedRef<ScrollView>();
 
   useDerivedValue(() => {
     if (Platform.OS === 'web') {
       if (aref && aref.current) {
-        aref.current.scrollTo({ y: digit.value * 200 });
+        aref.current.scrollTo({y: digit.value * 200});
       }
     } else {
       scrollTo(aref, 0, digit.value * 200, true);
@@ -78,8 +78,7 @@ function Digit({ digit }: { digit: Animated.SharedValue<number> }) {
   });
 
   return (
-    <View
-      style={{ height: 200, width: Platform.OS === 'web' ? 50 : undefined }}>
+    <View style={{height: 200, width: Platform.OS === 'web' ? 50 : undefined}}>
       <ScrollView ref={aref}>
         {digits.map((i) => {
           return (
@@ -90,7 +89,7 @@ function Digit({ digit }: { digit: Animated.SharedValue<number> }) {
                 flexDirection: 'row',
               }}
               key={i}>
-              <Text style={{ fontSize: 30 }}>{i}</Text>
+              <Text style={{fontSize: 30}}>{i}</Text>
             </View>
           );
         })}
@@ -99,13 +98,13 @@ function Digit({ digit }: { digit: Animated.SharedValue<number> }) {
   );
 }
 
-function ProgressBar({ progress }: { progress: Animated.SharedValue<number> }) {
+function ProgressBar({progress}: {progress: Animated.SharedValue<number>}) {
   const x = useSharedValue(0);
   const max = useSharedValue(0);
 
   const handler = useAnimatedGestureHandler<
     PanGestureHandlerGestureEvent,
-    { x: number }
+    {x: number}
   >({
     onStart: (_, ctx) => {
       ctx.x = x.value;
@@ -123,7 +122,7 @@ function ProgressBar({ progress }: { progress: Animated.SharedValue<number> }) {
 
   const stylez = useAnimatedStyle(() => {
     return {
-      transform: [{ translateX: x.value }],
+      transform: [{translateX: x.value}],
     };
   });
 
@@ -133,8 +132,7 @@ function ProgressBar({ progress }: { progress: Animated.SharedValue<number> }) {
     };
   });
   return (
-    <View
-      style={{ height: 100, paddingRight: 80, paddingLeft: 40, width: 300 }}>
+    <View style={{height: 100, paddingRight: 80, paddingLeft: 40, width: 300}}>
       <View
         onLayout={(e) => {
           max.value = e.nativeEvent.layout.width;
@@ -146,8 +144,8 @@ function ProgressBar({ progress }: { progress: Animated.SharedValue<number> }) {
               height: 2,
               marginRight: 20,
               transform: [
-                { translateY: dotSize / 2 + 1 },
-                { translateX: dotSize / 2 },
+                {translateY: dotSize / 2 + 1},
+                {translateX: dotSize / 2},
               ],
             },
             barStyle,

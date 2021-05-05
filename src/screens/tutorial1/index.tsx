@@ -1,5 +1,13 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, Animated, StatusBar} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Animated,
+  StatusBar,
+  TouchableOpacity,
+} from 'react-native';
 import {bg, dataUser, config} from './__mock__/data';
 
 const {AVATAR_SIZE, SPACING} = config;
@@ -43,40 +51,42 @@ export default () => {
             outputRange: [1, 1, 1, 0],
           });
           return (
-            <Animated.View
-              style={[
-                styles.shadow,
-                styles.card,
-                {
-                  transform: [
-                    {
-                      scale,
-                    },
-                  ],
-                  opacity,
-                },
-              ]}>
-              <Image
-                source={{uri: item.image}}
-                style={{
-                  width: AVATAR_SIZE,
-                  height: AVATAR_SIZE,
-                  borderRadius: AVATAR_SIZE,
-                  marginRight: SPACING / 2,
-                }}
-              />
-              <View style={{flex: 1}}>
-                <Text style={{fontSize: 22, fontWeight: '700'}}>
-                  {item.name}
-                </Text>
-                <Text style={{fontSize: 18, opacity: 0.7}}>
-                  {item.jobTitle}
-                </Text>
-                <Text style={{fontSize: 14, opacity: 0.8, color: '#0099cc'}}>
-                  {item.email}
-                </Text>
-              </View>
-            </Animated.View>
+            <TouchableOpacity>
+              <Animated.View
+                style={[
+                  styles.shadow,
+                  styles.card,
+                  {
+                    transform: [
+                      {
+                        scale,
+                      },
+                    ],
+                    opacity,
+                  },
+                ]}>
+                <Image
+                  source={{uri: item.image}}
+                  style={{
+                    width: AVATAR_SIZE,
+                    height: AVATAR_SIZE,
+                    borderRadius: AVATAR_SIZE,
+                    marginRight: SPACING / 2,
+                  }}
+                />
+                <View style={{flex: 1}}>
+                  <Text style={{fontSize: 22, fontWeight: '700'}}>
+                    {item.name}
+                  </Text>
+                  <Text style={{fontSize: 18, opacity: 0.7}}>
+                    {item.jobTitle}
+                  </Text>
+                  <Text style={{fontSize: 14, opacity: 0.8, color: '#0099cc'}}>
+                    {item.email}
+                  </Text>
+                </View>
+              </Animated.View>
+            </TouchableOpacity>
           );
         }}
       />

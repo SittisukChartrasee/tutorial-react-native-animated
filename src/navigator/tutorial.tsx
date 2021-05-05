@@ -26,21 +26,19 @@ SCREENS = {
 };
 
 export default (): JSX.Element => (
-  <NavigationContainer>
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}>
-      {Object.keys(SCREENS).map((name) => (
-        <Stack.Screen
-          key={name}
-          name={name}
-          component={SCREENS[name].screens}
-          initialParams={{
-            token: 'we have token',
-          }}
-        />
-      ))}
-    </Stack.Navigator>
-  </NavigationContainer>
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}>
+    {Object.keys(SCREENS).map((name) => (
+      <Stack.Screen
+        key={name}
+        name={name}
+        component={SCREENS[name].screens}
+        initialParams={{
+          token: 'we have token',
+        }}
+      />
+    ))}
+  </Stack.Navigator>
 );
