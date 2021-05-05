@@ -1,6 +1,7 @@
 import React, {ComponentType} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {createNativeStackNavigator} from 'react-native-screens/native-stack';
 import {
   I18nManager,
   SafeAreaView,
@@ -8,25 +9,32 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import {createNativeStackNavigator} from 'react-native-screens/native-stack';
-import RNRestart from 'react-native-restart';
-import {MenuItem, SettingsSwitch} from '../components';
+import {MenuItem} from '../components';
 import animated from './animated';
 import screens from './screens';
+import tutorial from './tutorial';
 
 type reigsterPages = {
   title: string;
   screens: ComponentType;
+  type: 'example' | 'tutorial';
 };
 
 const SCREENS: Record<string, reigsterPages> = {
   animated: {
     title: 'animated',
     screens: animated,
+    type: 'example',
   },
   playground: {
     title: 'playground',
     screens: screens,
+    type: 'example',
+  },
+  tutorial: {
+    title: 'tutorial',
+    screens: tutorial,
+    type: 'tutorial',
   },
 };
 
@@ -42,23 +50,26 @@ type RootStackParamList = {Main: undefined} & {
 const MainScreen = ({navigation}: MainScreenProps): JSX.Element => (
   <ScrollView>
     <SafeAreaView>
-      <SettingsSwitch
-        style={styles.switch}
-        label="Right to left"
-        value={I18nManager.isRTL}
-        onValueChange={() => {
-          I18nManager.forceRTL(!I18nManager.isRTL);
-          RNRestart.Restart();
-        }}
-      />
-      <Text style={styles.label}>Examples</Text>
-      {Object.keys(SCREENS).map((name) => (
-        <MenuItem
-          key={name}
-          title={SCREENS[name].title}
-          onPress={() => navigation.navigate(name)}
-        />
-      ))}
+      <Text style={styles.label}>{'Examples'}</Text>
+      {Object.keys(SCREENS)
+        .filter((val) => SCREENS[val].type === 'example')
+        .map((name) => (
+          <MenuItem
+            key={name}
+            title={SCREENS[name].title}
+            onPress={() => navigation.navigate(name)}
+          />
+        ))}
+      <Text style={styles.label}>{'Tutorial'}</Text>
+      {Object.keys(SCREENS)
+        .filter((val) => SCREENS[val].type === 'tutorial')
+        .map((name) => (
+          <MenuItem
+            key={name}
+            title={SCREENS[name].title}
+            onPress={() => navigation.navigate(name)}
+          />
+        ))}
     </SafeAreaView>
   </ScrollView>
 );
@@ -71,15 +82,14 @@ const navigation = (): JSX.Element => (
       }}>
       <Stack.Screen
         name="Main"
-        options={{title: '📱 React Native Screens Examples'}}
+        options={{title: '📱 React Native Screens'}}
         component={MainScreen}
       />
       {Object.keys(SCREENS).map((name) => (
         <Stack.Screen
           key={name}
           name={name}
-          getComponent={() => SCREENS[name].screens}
-          options={{headerShown: true}}
+          component={SCREENS[name].screens}
         />
       ))}
     </Stack.Navigator>
@@ -91,9 +101,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: 'black',
     margin: 10,
-    marginTop: 15,
-  },
-  switch: {
     marginTop: 15,
   },
 });

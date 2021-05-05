@@ -23,9 +23,9 @@ export default () => {
         }
       />
       {data.map((d: IRootDefault, i: number) => (
-        <>
+        <View key={`${d.title}`}>
           {d.active && (
-            <View key={`${d.title + i}`} style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row'}}>
               <Text style={{fontSize: 20}}>{d.title}</Text>
               <Button
                 title="remove"
@@ -37,7 +37,7 @@ export default () => {
               />
             </View>
           )}
-        </>
+        </View>
       ))}
     </View>
   );

@@ -136,11 +136,13 @@ const navigation = (): JSX.Element => {
     <Stack.Navigator
       screenOptions={{
         direction: I18nManager.isRTL ? 'rtl' : 'ltr',
+        headerShown: false,
       }}>
       <Stack.Screen
         name="Main"
         options={{
           title: '📱 React Native Screens Examples',
+          headerShown: false,
         }}
         component={MainScreen}
       />
@@ -148,7 +150,7 @@ const navigation = (): JSX.Element => {
         <Stack.Screen
           key={name}
           name={name}
-          getComponent={() => SCREENS[name].component}
+          component={SCREENS[name].component}
           options={{headerShown: false}}
         />
       ))}
