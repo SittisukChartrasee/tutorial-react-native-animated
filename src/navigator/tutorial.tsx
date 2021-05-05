@@ -25,6 +25,7 @@ SCREENS = {
     title: 'carousel',
     screens: tutorial2,
   },
+
   tutoAnimated: {
     title: 'animated',
     screens: animated,
