@@ -23,7 +23,7 @@ export default () => {
         }
       />
       {data.map((d: IRootDefault, i: number) => (
-        <View key={`${d.title}`}>
+        <View key={`${d.title} + ${i}`}>
           {d.active && (
             <View style={{flexDirection: 'row'}}>
               <Text style={{fontSize: 20}}>{d.title}</Text>

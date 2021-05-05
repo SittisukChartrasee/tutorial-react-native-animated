@@ -1,17 +1,17 @@
 export type IRoot = {
-  data: IRootDefault[]
-}
+  data: IRootDefault[];
+};
 
 export type IRootDefault = {
-  title: string
-  active: boolean
-}
+  title: string;
+  active: boolean;
+};
 
 export type IRootAction = {
-  type: string
-  value: number 
-  key: string
-}
+  type: string;
+  value: number;
+  key: string;
+};
 
 const initState = {
   data: [
