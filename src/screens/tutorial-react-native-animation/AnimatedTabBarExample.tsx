@@ -14,7 +14,7 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
 } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
   faCoffee,
   faTrash,
@@ -22,11 +22,11 @@ import {
   faList,
   faReply,
 } from '@fortawesome/free-solid-svg-icons';
-import Svg, { Path } from 'react-native-svg';
+import Svg, {Path} from 'react-native-svg';
 import * as shape from 'd3-shape';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import {IconProp} from '@fortawesome/fontawesome-svg-core';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const tabs = [
   {
@@ -115,11 +115,11 @@ function Button({
         position + width / 2,
       ],
       [1, 0, 0, 1],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
     return {
       opacity: visibility,
-      transform: [{ translateY: 10 * (1 - visibility) }],
+      transform: [{translateY: 10 * (1 - visibility)}],
     };
   });
 
@@ -140,7 +140,7 @@ type ActiveIconProps = {
   activeIndex: Animated.SharedValue<number>;
   width: number;
 };
-function ActiveIcon({ item, index, activeIndex, width }: ActiveIconProps) {
+function ActiveIcon({item, index, activeIndex, width}: ActiveIconProps) {
   const circleIconStyle = useAnimatedStyle(() => {
     const isActive = index === activeIndex.value;
     const yOffset = isActive ? 0 : 80;
@@ -186,14 +186,14 @@ function Bar() {
 
   const indicatorStyle = useAnimatedStyle(() => {
     return {
-      transform: [{ translateX: indicatorPosition.value }],
+      transform: [{translateX: indicatorPosition.value}],
     };
   });
 
   return (
     <View style={styles.container}>
       <Animated.View
-        style={[{ position: 'absolute', left: -tabWidth }, indicatorStyle]}>
+        style={[{position: 'absolute', left: -tabWidth}, indicatorStyle]}>
         {tabs.map((tab, index) => (
           <ActiveIcon
             index={index}
@@ -204,7 +204,7 @@ function Bar() {
           />
         ))}
         <Svg width={tabWidth * 2} height={64}>
-          <Path fill="red" {...{ d }} />
+          <Path fill="green" {...{d}} />
         </Svg>
       </Animated.View>
       {tabs.map((tab, index) => {
@@ -230,7 +230,7 @@ const tabBarStyles = StyleSheet.create({
     width,
     height,
     flex: 1,
-    backgroundColor: 'red',
+    backgroundColor: 'green',
   },
   dummyPusher: {
     flex: 1,

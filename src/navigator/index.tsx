@@ -79,6 +79,7 @@ const navigation = (): JSX.Element => (
     <Stack.Navigator
       screenOptions={{
         direction: I18nManager.isRTL ? 'rtl' : 'ltr',
+        headerShown: false,
       }}>
       <Stack.Screen
         name="Main"
