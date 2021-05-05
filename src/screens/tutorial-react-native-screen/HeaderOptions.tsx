@@ -25,7 +25,7 @@ interface MainScreenProps {
 const MainScreen = ({navigation}: MainScreenProps): JSX.Element => {
   useEffect(() => {
     navigation.navigate('Settings');
-  }, []);
+  }, [navigation]);
 
   return (
     <ScrollView>

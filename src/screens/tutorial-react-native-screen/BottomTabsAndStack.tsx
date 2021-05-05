@@ -39,7 +39,7 @@ const DetailsScreen = ({
     navigation.setOptions({
       title: `Details screen #${index}`,
     });
-  }, [navigation]);
+  }, [index, navigation]);
 
   const currentColor =
     index < colors.length ? colors[index] : colors[colors.length - 1];

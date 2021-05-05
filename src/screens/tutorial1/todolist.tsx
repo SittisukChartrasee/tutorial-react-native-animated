@@ -1,14 +1,12 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import { IStore } from '../../interface/interfaceStore';
-import { IRootAction, IRootDefault } from '../../reducers/root';
-
+import {IStore} from '../../interface/interfaceStore';
+import {IRootAction, IRootDefault} from '../../reducers/root';
 
 export default () => {
   const dispatch = useDispatch();
   const {data} = useSelector((state: IStore) => state.root);
-  const test = useSelector((state) => state);
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

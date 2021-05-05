@@ -1,9 +1,9 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View, LogBox } from 'react-native';
+import {FlatList, StyleSheet, Text, View, LogBox} from 'react-native';
 
-import { RectButton, ScrollView } from 'react-native-gesture-handler';
+import {RectButton, ScrollView} from 'react-native-gesture-handler';
 
-import { createStackNavigator } from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 
 import ChatHeads from './chatHeads';
 import Code from './code';
@@ -35,17 +35,17 @@ LogBox.ignoreLogs([
 // https://github.com/react-navigation/react-navigation/issues/3956
 
 const SCREENS = {
-  Snappable: { screen: Snappable, title: 'Snappable' },
-  Test: { screen: Test, title: 'Test' },
-  ImageViewer: { screen: ImageViewer, title: 'Image Viewer' },
-  Interactable: { screen: InteractablePlayground, title: 'Interactable' },
-  Interpolate: { screen: Interpolate, title: 'Interpolate' },
-  Colors: { screen: Colors, title: 'Colors' },
-  StartAPI: { screen: StartAPI, title: 'Start API' },
-  chatHeads: { screen: ChatHeads, title: 'Chat heads (iOS only)' },
-  code: { screen: Code, title: 'Animated.Code component' },
-  width: { screen: WidthAndHeight, title: 'width & height & more' },
-  rotations: { screen: Rotations, title: 'rotations (concat node)' },
+  Snappable: {screen: Snappable, title: 'Snappable'},
+  Test: {screen: Test, title: 'Test'},
+  ImageViewer: {screen: ImageViewer, title: 'Image Viewer'},
+  Interactable: {screen: InteractablePlayground, title: 'Interactable'},
+  Interpolate: {screen: Interpolate, title: 'Interpolate'},
+  Colors: {screen: Colors, title: 'Colors'},
+  StartAPI: {screen: StartAPI, title: 'Start API'},
+  chatHeads: {screen: ChatHeads, title: 'Chat heads (iOS only)'},
+  code: {screen: Code, title: 'Animated.Code component'},
+  width: {screen: WidthAndHeight, title: 'width & height & more'},
+  rotations: {screen: Rotations, title: 'rotations (concat node)'},
   imperative: {
     screen: Imperative,
     title: 'imperative (set value / toggle visibility)',
@@ -86,7 +86,7 @@ class MainScreen extends React.Component {
   };
 
   render() {
-    const data = Object.keys(SCREENS).map((key) => ({ key }));
+    const data = Object.keys(SCREENS).map((key) => ({key}));
     return (
       <FlatList
         style={styles.list}
@@ -95,7 +95,7 @@ class MainScreen extends React.Component {
         renderItem={(props) => (
           <MainScreenItem
             {...props}
-            onPressItem={({ key }) => this.props.navigation.navigate(key)}
+            onPressItem={({key}) => this.props.navigation.navigate(key)}
           />
         )}
         renderScrollComponent={(props) => <ScrollView {...props} />}
@@ -107,7 +107,7 @@ class MainScreen extends React.Component {
   }
 }
 
-function LaunchReanimated2({ setUseRea2 }) {
+function LaunchReanimated2({setUseRea2}) {
   return (
     <>
       <ItemSeparator />
@@ -123,7 +123,7 @@ const ItemSeparator = () => <View style={styles.separator} />;
 class MainScreenItem extends React.Component {
   _onPress = () => this.props.onPressItem(this.props.item);
   render() {
-    const { key } = this.props.item;
+    const {key} = this.props.item;
     return (
       <RectButton style={styles.button} onPress={this._onPress}>
         <Text style={styles.buttonText}>{SCREENS[key].title || key}</Text>
@@ -138,7 +138,7 @@ const Navigator = (setUseRea2) => (
   <Stack.Navigator>
     <Stack.Screen
       name="Home"
-      options={{ title: '👵 Reanimated 1.x Examples' }}
+      options={{title: '👵 Reanimated 1.x Examples'}}
       children={(props) => <MainScreen {...props} setUseRea2={setUseRea2} />}
     />
     {Object.keys(SCREENS).map((name) => (
@@ -146,7 +146,7 @@ const Navigator = (setUseRea2) => (
         key={name}
         name={name}
         getComponent={() => SCREENS[name].screen}
-        options={{ title: SCREENS[name].title || name }}
+        options={{title: SCREENS[name].title || name}}
       />
     ))}
     {Object.keys(INTERACTABLE_SCREENS).map((name) => (
@@ -154,7 +154,7 @@ const Navigator = (setUseRea2) => (
         key={name}
         name={name}
         getComponent={() => INTERACTABLE_SCREENS[name].screen}
-        options={{ title: INTERACTABLE_SCREENS[name].title || name }}
+        options={{title: INTERACTABLE_SCREENS[name].title || name}}
       />
     ))}
   </Stack.Navigator>

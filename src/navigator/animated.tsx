@@ -1,13 +1,12 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View, LogBox } from 'react-native';
+import {FlatList, StyleSheet, Text, View, LogBox} from 'react-native';
 
-import { RectButton, ScrollView } from 'react-native-gesture-handler';
+import {RectButton, ScrollView} from 'react-native-gesture-handler';
 
 import {
   createStackNavigator,
   StackNavigationProp,
 } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
 
 import Reanimated1 from '../screens/reanimated1/App';
 
@@ -27,7 +26,7 @@ import LiquidSwipe from '../screens/tutorial-react-native-animation/LiquidSwipe'
 import ScrollExample from '../screens/tutorial-react-native-animation/AnimatedScrollExample';
 LogBox.ignoreLogs(['Calling `getNode()`']);
 
-type Screens = Record<string, { screen: React.ComponentType; title?: string }>;
+type Screens = Record<string, {screen: React.ComponentType; title?: string}>;
 
 const SCREENS: Screens = {
   AnimatedStyleUpdate: {
@@ -88,14 +87,14 @@ const SCREENS: Screens = {
   },
 };
 
-type RootStackParams = { Home: undefined } & { [key: string]: undefined };
+type RootStackParams = {Home: undefined} & {[key: string]: undefined};
 type MainScreenProps = {
   navigation: StackNavigationProp<RootStackParams, 'Home'>;
   setUseRea2: (useRea2: boolean) => void;
 };
 
-function MainScreen({ navigation, setUseRea2 }: MainScreenProps) {
-  const data = Object.keys(SCREENS).map((key) => ({ key }));
+function MainScreen({navigation, setUseRea2}: MainScreenProps) {
+  const data = Object.keys(SCREENS).map((key) => ({key}));
   return (
     <FlatList
       style={styles.list}
@@ -105,7 +104,7 @@ function MainScreen({ navigation, setUseRea2 }: MainScreenProps) {
         <MainScreenItem
           {...props}
           screens={SCREENS}
-          onPressItem={({ key }) => navigation.navigate(key)}
+          onPressItem={({key}) => navigation.navigate(key)}
         />
       )}
       renderScrollComponent={(props) => <ScrollView {...props} />}
@@ -118,10 +117,10 @@ export function ItemSeparator(): React.ReactElement {
   return <View style={styles.separator} />;
 }
 
-type Item = { key: string };
+type Item = {key: string};
 type MainScreenItemProps = {
   item: Item;
-  onPressItem: ({ key }: Item) => void;
+  onPressItem: ({key}: Item) => void;
   screens: Screens;
 };
 export function MainScreenItem({
@@ -129,7 +128,7 @@ export function MainScreenItem({
   onPressItem,
   screens,
 }: MainScreenItemProps): React.ReactElement {
-  const { key } = item;
+  const {key} = item;
   return (
     <RectButton style={styles.button} onPress={() => onPressItem(item)}>
       <Text style={styles.buttonText}>{screens[key].title || key}</Text>
@@ -158,7 +157,7 @@ const Reanimated2 = (setUseRea2: (useRea2: boolean) => void) => (
   <Stack.Navigator>
     <Stack.Screen
       name="Home"
-      options={{ title: '🎬 Reanimated 2.x Examples' }}
+      options={{title: '🎬 Reanimated 2.x Examples'}}
       children={(props) => <MainScreen {...props} setUseRea2={setUseRea2} />}
     />
     {Object.keys(SCREENS).map((name) => (
@@ -166,7 +165,7 @@ const Reanimated2 = (setUseRea2: (useRea2: boolean) => void) => (
         key={name}
         name={name}
         getComponent={() => SCREENS[name].screen}
-        options={{ title: SCREENS[name].title || name }}
+        options={{title: SCREENS[name].title || name}}
       />
     ))}
   </Stack.Navigator>
@@ -174,12 +173,7 @@ const Reanimated2 = (setUseRea2: (useRea2: boolean) => void) => (
 
 function App(): React.ReactElement {
   const [useRea2, setUseRea2] = React.useState(true);
-
-  return (
-    <NavigationContainer>
-      {useRea2 ? Reanimated2(setUseRea2) : Reanimated1(setUseRea2)}
-    </NavigationContainer>
-  );
+  return useRea2 ? Reanimated2(setUseRea2) : Reanimated1(setUseRea2);
 }
 
 export const styles = StyleSheet.create({

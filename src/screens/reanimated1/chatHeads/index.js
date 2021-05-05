@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
-import { PanGestureHandler, State } from 'react-native-gesture-handler';
+import React, {Component} from 'react';
+import {Dimensions, StyleSheet, View} from 'react-native';
+import {PanGestureHandler, State} from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 const {
   set,
@@ -82,7 +82,7 @@ class Tracking extends Component {
     const snapPoint = cond(
       lessThan(add(transX, multiply(TOSS_SEC, dragVX)), 0),
       -(width / 2),
-      width / 2
+      width / 2,
     );
 
     const config = {
@@ -127,10 +127,10 @@ class Tracking extends Component {
               cond(state.finished, stopClock(clock)),
               state.position,
             ],
-            0
-          )
+            0,
+          ),
         ),
-      ])
+      ]),
     );
 
     this._transY = block([
@@ -140,7 +140,7 @@ class Tracking extends Component {
           set(transY, add(transY, sub(dragY, prevDragY))),
           set(prevDragY, dragY),
         ],
-        set(prevDragY, 0)
+        set(prevDragY, 0),
       ),
       transY,
     ]);
@@ -163,8 +163,8 @@ class Tracking extends Component {
             styles.box,
             {
               transform: [
-                { translateX: this.follow3x }, 
-                { translateY: this.follow3y },
+                {translateX: this.follow3x},
+                {translateY: this.follow3y},
               ],
             },
           ]}
@@ -177,8 +177,8 @@ class Tracking extends Component {
             styles.box,
             {
               transform: [
-                { translateX: this.follow2x }, 
-                { translateY: this.follow2y },
+                {translateX: this.follow2x},
+                {translateY: this.follow2y},
               ],
             },
           ]}
@@ -192,8 +192,8 @@ class Tracking extends Component {
             styles.box,
             {
               transform: [
-                { translateX: this.follow1x }, 
-                { translateY: this.follow1y },
+                {translateX: this.follow1x},
+                {translateY: this.follow1y},
               ],
             },
           ]}
@@ -211,8 +211,8 @@ class Tracking extends Component {
               styles.box,
               {
                 transform: [
-                  { translateX: this._transX }, 
-                  { translateY: this._transY },
+                  {translateX: this._transX},
+                  {translateY: this._transY},
                 ],
               },
             ]}
