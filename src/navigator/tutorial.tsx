@@ -2,6 +2,8 @@ import React, {ComponentType} from 'react';
 import {createNativeStackNavigator} from 'react-native-screens/native-stack';
 import todolist from '../screens/tutorial1/todolist';
 import animated from '../screens/tutorial1';
+import tutorial2 from '../screens/tutorial2';
+import pager from '../screens/tutorial2/pager';
 import {NavigationContainer} from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
@@ -15,6 +17,14 @@ declare let SCREENS: Record<
 >;
 
 SCREENS = {
+  tutoPager: {
+    title: 'pager',
+    screens: pager,
+  },
+  tutoCarousel: {
+    title: 'carousel',
+    screens: tutorial2,
+  },
   tutoAnimated: {
     title: 'animated',
     screens: animated,
@@ -25,7 +35,7 @@ SCREENS = {
   },
 };
 
-export default (): JSX.Element => (
+const tutorialNavigator = (): JSX.Element => (
   <Stack.Navigator
     screenOptions={{
       headerShown: false,
@@ -42,3 +52,9 @@ export default (): JSX.Element => (
     ))}
   </Stack.Navigator>
 );
+
+export const tutorialContainer = () => (
+  <NavigationContainer>{tutorialNavigator()}</NavigationContainer>
+);
+
+export default tutorialNavigator;

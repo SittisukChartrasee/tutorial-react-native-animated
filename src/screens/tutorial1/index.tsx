@@ -8,7 +8,7 @@ import {
   StatusBar,
   TouchableOpacity,
 } from 'react-native';
-import {bg, dataUser, config} from './__mock__/data';
+import {bg, dataUser, config} from '../__mock__/data';
 
 const {AVATAR_SIZE, SPACING} = config;
 const ITEM_SIZE = AVATAR_SIZE + SPACING * 3.148;
